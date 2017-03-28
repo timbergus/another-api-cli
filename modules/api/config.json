@@ -1,0 +1,37 @@
+[
+  {
+    "name": "auth.js",
+    "path": ["src"],
+    "template": false
+  },
+  {
+    "name": "index.js",
+    "path": ["src"],
+    "template": false
+  },
+  {
+    "name": "models.js",
+    "path": ["src"],
+    "template": false
+  },
+  {
+    "name": "routes.js",
+    "path": ["src"],
+    "template": false
+  },
+  {
+    "name": "token.js",
+    "path": ["src", "handlers"],
+    "template": false
+  },
+  {
+    "name": "utils.js",
+    "path": ["src"],
+    "template": false
+  },
+  {
+    "name": "utils.test.js",
+    "path": ["src"],
+    "template": false
+  }
+]
