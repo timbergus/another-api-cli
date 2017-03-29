@@ -65,6 +65,11 @@
     "template": false
   },
   {
+    "name": "sockets.js",
+    "path": ["src"],
+    "template": false
+  },
+  {
     "name": "token.js",
     "path": ["src", "handlers"],
     "template": false

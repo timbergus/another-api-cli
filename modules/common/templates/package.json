@@ -36,6 +36,7 @@
     "mongoose": "4.9.2",
     "mysql": "2.13.0",
     "pg": "6.1.5",
+    "socket.io": "1.7.3",
     "vision": "4.1.1"
   },
   "devDependencies": {

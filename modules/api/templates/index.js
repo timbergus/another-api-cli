@@ -45,6 +45,10 @@ server.connection({
   }
 });
 
+// If you need to use web sockets, uncomment this line.
+
+// require('./sockets')(server.listener);
+
 // And here we define the configuration for Swagger and Good.
 
 const hapiSwaggerOptions = {
