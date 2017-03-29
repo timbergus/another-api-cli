@@ -1,7 +1,6 @@
 const fs = require('fs');
 const chalk = require('chalk');
 const Mustache = require('mustache');
-const upperCamelCase = require('uppercamelcase');
 const { resolve, dirname } = require('path');
 
 const tool = dirname(require.main.filename);
