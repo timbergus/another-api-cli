@@ -15,7 +15,9 @@ if (mongo.username && mongo.password) {
 
 // And we use the created connection to notify the user.
 
-const db = Mongoose.connection;
+const connection = Mongoose.connection;
 
-db.once('open', () => console.log(chalk.white.bgGreen('Mongo client connected!')));
-db.on('error', error => console.log(chalk.white.bgRed('MongoDB error:'), error));
+connection.once('open', () => console.log(chalk.white.bgGreen('Mongo client connected!')));
+connection.on('error', error => console.log(chalk.white.bgRed('MongoDB error:'), error));
+
+module.exports.mongoDBConnection = connection;

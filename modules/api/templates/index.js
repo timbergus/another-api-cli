@@ -8,8 +8,13 @@ const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
 const AuthBearer = require('hapi-auth-bearer-token');
 
-// If you need a MongoDB database, uncomment this line.
-// require('./ddbb/mongodb');
+// If you need a MongoDB, MySQL or PostgreSQL database, configure the
+// respective connection in each JSON file inside "config" folder, and
+// uncomment the proper line.
+
+// const { mongoDBConnection } = require('./ddbb/mongodb');
+// const { mySQLConnection } = require('./ddbb/mysql');
+// const { postgreSQLConnection } = require('./ddbb/postgresql');
 
 // The variable "version" contains the version of the application for Swagger.
 

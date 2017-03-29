@@ -5,6 +5,11 @@
     "template": false
   },
   {
+    "name": "graphql.js",
+    "path": ["src", "handlers"],
+    "template": false
+  },
+  {
     "name": "headers.js",
     "path": ["src", "utils"],
     "template": false
@@ -31,6 +36,26 @@
   },
   {
     "name": "mongodb.json",
+    "path": ["src", "config"],
+    "template": false
+  },
+  {
+    "name": "mysql.js",
+    "path": ["src", "ddbb"],
+    "template": false
+  },
+  {
+    "name": "mysql.json",
+    "path": ["src", "config"],
+    "template": false
+  },
+  {
+    "name": "postgresql.js",
+    "path": ["src", "ddbb"],
+    "template": false
+  },
+  {
+    "name": "postgresql.json",
     "path": ["src", "config"],
     "template": false
   },

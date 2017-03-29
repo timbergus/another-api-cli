@@ -4,6 +4,7 @@ const Joi = require('joi');
 
 // These are the routes handlers.
 
+const { graphqlHandler } = require('./handlers/graphql');
 const { ping, createToken, decodeToken } = require('./handlers/token');
 
 // And these are the routes.
@@ -51,5 +52,21 @@ module.exports.routes = [
       }
     },
     handler: decodeToken
+  },
+  {
+    method: 'POST',
+    path: '/graphql',
+    config: {
+      auth: 'simple',
+      tags: ['api'],
+      description: 'Endpoint for GraphQL.',
+      notes: 'Here we can ask for data using GraphQL.',
+      validate: {
+        headers: Joi.object({
+          authorization: Joi.string().required()
+        }).options({ allowUnknown: true })
+      }
+    },
+    handler: graphqlHandler
   }
 ];
