@@ -1,30 +1,34 @@
+// Here we import the tools we need for the server.
+
+const chalk = require('chalk');
 const Hapi = require('hapi');
-const HapiSwagger = require('hapi-swagger');
 const Good = require('good');
 const Inert = require('inert');
 const Vision = require('vision');
-const chalk = require('chalk');
+const HapiSwagger = require('hapi-swagger');
 const AuthBearer = require('hapi-auth-bearer-token');
-const Pack = require('../package');
-const Mongoose = require('mongoose');
+
+// If you need a MongoDB database, uncomment this line.
+// require('./ddbb/mongodb');
+
+// The variable "version" contains the version of the application for Swagger.
+
+const { version } = require('../package');
+
+// The variable "routes" contains the routes for our REST API.
 
 const { routes } = require('./routes');
-const { validate } = require('./auth');
 
-const { mongo } = require('./auth');
+// Validate function that validates the token in our authorization strategy for
+// the routes.
 
-if (mongo.username && mongo.password) {
-  Mongoose.connect(`mongodb://${ mongo.username }:${ mongo.password }@${ mongo.url }/${ mongo.database }`);
-} else {
-  Mongoose.connect(`mongodb://${ mongo.url }/${ mongo.database }`);
-}
+const { validateFunc } = require('./auth');
 
-const db = Mongoose.connection;
-
-db.once('open', () => console.log(chalk.white.bgGreen('Mongo client connected!')));
-db.on('error', error => console.log(chalk.white.bgRed('MongoDB error:'), error));
+// This is the Hapi server itself.
 
 const server = new Hapi.Server();
+
+// Here we define the connection parameters (host, port and cors).
 
 server.connection({
   host: '0.0.0.0',
@@ -36,11 +40,13 @@ server.connection({
   }
 });
 
+// And here we define the configuration for Swagger and Good.
+
 const hapiSwaggerOptions = {
   info: {
     'title': 'Test API Documentation',
     'description': 'Move your app forward with the Uber API',
-    'version': Pack.version,
+    'version': version,
     'contact': {
       'name': 'Gustavo Muñoz',
       'email': 'timbergus@gmail.com'
@@ -70,6 +76,8 @@ var goodOptions = {
   }
 };
 
+// Then we register the plugins and launch the server.
+
 server.register([
   AuthBearer,
   Inert,
@@ -88,7 +96,12 @@ server.register([
     throw error;
   }
 
-  server.auth.strategy('simple', 'bearer-access-token', { validateFunc: validate });
+  // Here we add a new authentication strategy to our server.
+
+  server.auth.strategy('simple', 'bearer-access-token', { validateFunc });
+
+  // And the routes.
+
   server.route(routes);
 
   server.start(err => {

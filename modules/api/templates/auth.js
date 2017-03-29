@@ -1,20 +1,22 @@
+// JSON web tokens creates tokens that can be self verified and configured.
+
 const jwt = require('jsonwebtoken');
+
+// Here we configure the token's options.
 
 const options = {
   issuer: 'demo',
-  expiresIn: '30m'
+  expiresIn: '10m'
 };
+
+// And here we set our top secret key to encrypt the token.
 
 const key = 'the demo secret key';
 
-module.exports.mongo = {
-  username: '',
-  password: '',
-  url: 'localhost',
-  database: 'test'
-};
+// This function verify the token for certain protected endpoints (auth
+// strategy for the route).
 
-module.exports.validate = function (token, callback) {
+module.exports.validateFunc = function (token, callback) {
   jwt.verify(token, key, (error, decoded) => {
     if (error) {
       return callback(null, false);
@@ -23,7 +25,9 @@ module.exports.validate = function (token, callback) {
   });
 };
 
-module.exports.generateToken = function (username) {
+// This function generates a token adding extra data.
+
+module.exports.signToken = function (username) {
   return new Promise((resolve, reject) => {
     jwt.sign({ username: username }, key, options, (error, token) => {
       if (error) {
@@ -33,6 +37,8 @@ module.exports.generateToken = function (username) {
     });
   });
 };
+
+// This function verifies and decodes a token extracting its data.
 
 module.exports.verifyToken = function (token) {
   return new Promise((resolve, reject) => {

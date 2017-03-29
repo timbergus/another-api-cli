@@ -39,14 +39,15 @@
   },
   "devDependencies": {
     "eslint": "3.18.0",
-    "glob": "7.1.1",
-    "nock": "9.0.9",
-    "nyc": "10.2.0",
-    "tap-spec": "4.1.1",
-    "tape": "4.6.3"
+    "jest-cli": "19.0.2",
+    "nock": "9.0.9"
   },
   "engines": {
     "node": "7.7.x",
     "npm": "4.4.x"
+  },
+  "jest": {
+    "testRegex": "/*.test.js$",
+    "collectCoverage": true
   }
 }

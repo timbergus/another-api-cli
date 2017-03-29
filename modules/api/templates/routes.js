@@ -1,18 +1,12 @@
+// This tool verifies schemas.
+
 const Joi = require('joi');
 
-const { getToken, verifyToken } = require('./handlers/token');
+// These are the routes handlers.
 
-const home = function (request, reply) {
-  reply('<h1>Template API</h1>');
-};
+const { ping, createToken, decodeToken } = require('./handlers/token');
 
-const unauthoriced = {
-  description: 'User not authorized',
-  schema: Joi.object({
-    statusCode: Joi.number().required().default(401),
-    error: Joi.string().required().default('Unauthorized')
-  }).label('Unauthorized')
-};
+// And these are the routes.
 
 module.exports.routes = [
   {
@@ -24,7 +18,7 @@ module.exports.routes = [
       description: 'Get the home page of the application',
       notes: 'It is needed to check if the up is running in Heroku because you need a response in /.'
     },
-    handler: home
+    handler: ping
   },
   {
     method: 'GET',
@@ -34,24 +28,13 @@ module.exports.routes = [
       tags: ['api'],
       description: 'Get a new token',
       notes: 'This is just a test route to create a token.',
-      plugins: {
-        'hapi-swagger': {
-          responses: {
-            200: {
-              description: 'Token',
-              schema: Joi.string().required()
-            }
-          },
-          payloadType: 'string'
-        }
-      },
       validate: {
         query: Joi.object({
           username: Joi.string().required()
         })
       }
     },
-    handler: getToken
+    handler: createToken
   },
   {
     method: 'GET',
@@ -61,20 +44,12 @@ module.exports.routes = [
       tags: ['api'],
       description: 'Verify a token',
       notes: 'This is just a test route to verify a token. It is needed to pass the token in the header with a Bearer authentication.',
-      plugins: {
-        'hapi-swagger': {
-          responses: {
-            401: unauthoriced
-          },
-          payloadType: 'form'
-        }
-      },
       validate: {
         headers: Joi.object({
           authorization: Joi.string().required()
         }).options({ allowUnknown: true })
       }
     },
-    handler: verifyToken
+    handler: decodeToken
   }
 ];

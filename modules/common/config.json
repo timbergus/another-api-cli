@@ -28,10 +28,5 @@
     "name": "README.md",
     "path": [],
     "template": true
-  },
-  {
-    "name": "test.js",
-    "path": [],
-    "template": false
   }
 ]

@@ -5,13 +5,33 @@
     "template": false
   },
   {
+    "name": "headers.js",
+    "path": ["src", "utils"],
+    "template": false
+  },
+  {
+    "name": "headers.test.js",
+    "path": ["src", "utils"],
+    "template": false
+  },
+  {
     "name": "index.js",
     "path": ["src"],
     "template": false
   },
   {
     "name": "models.js",
-    "path": ["src"],
+    "path": ["src", "ddbb"],
+    "template": false
+  },
+  {
+    "name": "mongodb.js",
+    "path": ["src", "ddbb"],
+    "template": false
+  },
+  {
+    "name": "mongodb.json",
+    "path": ["src", "config"],
     "template": false
   },
   {
@@ -22,16 +42,6 @@
   {
     "name": "token.js",
     "path": ["src", "handlers"],
-    "template": false
-  },
-  {
-    "name": "utils.js",
-    "path": ["src"],
-    "template": false
-  },
-  {
-    "name": "utils.test.js",
-    "path": ["src"],
     "template": false
   }
 ]
