@@ -1,4 +1,5 @@
 // JSON web tokens creates tokens that can be self verified and configured.
+// We will use the most basic library to keep things simple.
 
 const jwt = require('jsonwebtoken');
 
