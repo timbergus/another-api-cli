@@ -19,6 +19,47 @@ module.exports = [
     }
   },
   {
+    type: 'checkbox',
+    name: 'ddbb',
+    message: 'databases:',
+    choices: [
+      {
+        name: 'mongodb',
+        value: {
+          name: 'mongodb',
+          value: "const { mongoDBConnection } = require('./ddbb/mongodb');"
+        },
+        short: 'MongoDB'
+      },
+      {
+        name: 'mysql',
+        value: {
+          name: 'mysql',
+          value: "const { mySQLConnection } = require('./ddbb/mysql');"
+        },
+        short: 'MySQL'
+      },
+      {
+        name: 'postgresql',
+        value: {
+          name: 'postgresql',
+          value: "const { postgreSQLConnection } = require('./ddbb/postgresql');"
+        },
+        short: 'PostgreSQL'
+      }
+    ]
+  },
+  {
+    type: 'confirm',
+    name: 'websockets',
+    message: 'websockets:'
+  },
+  {
+    type: 'confirm',
+    name: 'graphql',
+    message: 'graphql:'
+  },
+  {
     type: 'input',
     name: 'version',
     message: 'version:',

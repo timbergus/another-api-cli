@@ -12,7 +12,7 @@ connection.connect(error => {
   if (error) {
     throw error;
   }
-  console.log(chalk.green.bgWhite('Connected to MySQL!'));
+  console.log(chalk.white.bgGreen('Connected to MySQL!'));
 });
 
 // We export the connection in order to perform operations. For example:

@@ -4,7 +4,9 @@ const Joi = require('joi');
 
 // These are the routes handlers.
 
+{{#graphql}}
 const { graphqlHandler } = require('./handlers/graphql');
+{{/graphql}}
 const { ping, createToken, decodeToken } = require('./handlers/token');
 
 // And these are the routes.
@@ -52,7 +54,7 @@ module.exports.routes = [
       }
     },
     handler: decodeToken
-  },
+  }{{#graphql}},
   {
     method: 'POST',
     path: '/graphql',
@@ -68,5 +70,5 @@ module.exports.routes = [
       }
     },
     handler: graphqlHandler
-  }
+  }{{/graphql}}
 ];

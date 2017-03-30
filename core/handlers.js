@@ -13,6 +13,12 @@ module.exports.actionHandler = type => new Promise((resolve, reject) => {
   inquirer.prompt(forms[type])
     .then(options => {
 
+      options.ddbb.forEach(db => {
+        options[db.name] = true;
+      });
+
+      console.log(options);
+
       // First we create the project folder.
 
       fs.mkdirSync(`./${ options.name }`);
@@ -23,10 +29,17 @@ module.exports.actionHandler = type => new Promise((resolve, reject) => {
         createElement(options, file, ['modules', 'common', 'templates']);
       });
 
-      // And finally, we create the project's files.
+      // And finally, we create the project's files. We need to add only the
+      // files that are required. That means:
+      //
+      // * file.dependency !== false
+      // or
+      // * options[file.dependency] === true
 
       require(`../modules/${ type }/config.json`).forEach(file => {
-        createElement(options, file, ['modules', type, 'templates']);
+        if (!file.dependency || options[file.dependency]) {
+          createElement(options, file, ['modules', type, 'templates']);
+        }
       });
 
       // Then we launch the command line tasks.

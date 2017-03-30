@@ -14,7 +14,7 @@ connection.connect(error => {
   if (error) {
     throw error;
   }
-  console.log(chalk.green.bgWhite('Connected to PostgreSQL!'));
+  console.log(chalk.white.bgGreen('Connected to PostgreSQL!'));
 });
 
 // We export the connection in order to perform operations. For example:
