@@ -13,9 +13,6 @@
     "type": "git",
     "url": "https://github.com/timbergus/another-api-cli.git"
   },
-  "scripts": {
-    "release": "np"
-  },
   "bin": {
     "apic": "./index.js"
   },
