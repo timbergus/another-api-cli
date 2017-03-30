@@ -3,7 +3,8 @@
 
 const jwt = require('jsonwebtoken');
 
-// Here we configure the token's options.
+// Here we configure the token's options. We can set the expiration time to
+// invalidate tokens.
 
 const options = {
   issuer: 'demo',
