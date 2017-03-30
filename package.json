@@ -1,6 +1,6 @@
 {
   "name": "another-api-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Another API CLI to create and manage new API with Node.",
   "main": "index.js",
   "author": "Gustavo Muñoz <timbergus@gmail.com>",
