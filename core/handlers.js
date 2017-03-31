@@ -17,8 +17,6 @@ module.exports.actionHandler = type => new Promise((resolve, reject) => {
         options[db.name] = true;
       });
 
-      console.log(options);
-
       // First we create the project folder.
 
       fs.mkdirSync(`./${ options.name }`);
