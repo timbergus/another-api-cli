@@ -57,7 +57,10 @@ module.exports = [
   {
     type: 'confirm',
     name: 'graphql',
-    message: 'graphql:'
+    message: 'graphql:',
+    when: function (answers) {
+      return answers.ddbb.find(db => db.name === 'mongodb');
+    }
   },
   {
     type: 'input',
