@@ -1,16 +1,47 @@
 const { graphql } = require('graphql');
-const { getSchema } = require('@risingstack/graffiti-mongoose');
+const { buildSchema } = require('graphql');
 
-const { User } = require('../ddbb/models');
+const {
+  getUsers,
+  getUser,
+  postUser,
+  putUser,
+  deleteUser
+} = require('../handlers/user-handlers');
 
-const options = {
-  mutation: true,
-  allowMongoIDMutation: true
+const schema = buildSchema(`
+  input UserInput {
+    username: String,
+    password: String
+  }
+
+  type UserOutput {
+    id: ID!
+    username: String,
+    password: String
+  }
+
+  type Query {
+    getUsers: [UserOutput],
+    getUser(id: ID!): UserOutput
+  }
+
+  type Mutation {
+    postUser(input: UserInput): UserOutput,
+    putUser(id: ID!, input: UserInput): UserOutput,
+    deleteUser(id: ID!): UserOutput
+  }
+`);
+
+const root = {
+  getUsers: getUsers,
+  getUser: getUser,
+  postUser: postUser,
+  putUser: putUser,
+  deleteUser: deleteUser
 };
-
-const schema = getSchema([User], options);
 
 module.exports.graphqlHandler = (request, reply) => {
   const { query } = request.payload;
-  graphql(schema, query).then(result => reply(result).code(200));
+  graphql(schema, query, root).then(result => reply(result).code(200));
 };

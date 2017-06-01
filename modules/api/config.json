@@ -12,6 +12,12 @@
     "dependency": "graphql"
   },
   {
+    "name": "user-handlers.js",
+    "path": ["src", "handlers"],
+    "template": false,
+    "dependency": "graphql"
+  },
+  {
     "name": "headers.js",
     "path": ["src", "utils"],
     "template": false,
