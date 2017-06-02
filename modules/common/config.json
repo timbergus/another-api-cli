@@ -20,6 +20,11 @@
     "template": false
   },
   {
+    "name": ".npmignore",
+    "path": [],
+    "template": false
+  },
+  {
     "name": "package.json",
     "path": [],
     "template": true
