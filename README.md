@@ -22,8 +22,12 @@ Just install the tool from [npm](https://www.npmjs.com/package/another-react-cli
 npm -g install another-api-cli
 ```
 
-And follow the steps to create you API.
+And execute in a terminal `apic`.
+
+Then follow the steps to create you API.
 
 To configure the databases connections, install and run the databases you need, and use the configuration files inside the __config__ folder to define the connection parameters.
+
+The API will try to connect to your database, so if you don't configure the connection properly, it will throw an error.
 
 Have fun :)
