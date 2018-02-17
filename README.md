@@ -1,5 +1,7 @@
 # Another API CLI (APIC)
 
+> ## This project has being __deprecated__ in favor of __[Fullstack CLI](https://www.npmjs.com/package/fullstack-cli)__ and it is no longer maintained. This new project covers both, the front and the back.
+
 This is another API CLI to manage and create API projects using Node.js and Hapi, and using [inquirer.js](https://github.com/SBoudrias/Inquirer.js/) to ask questions to the user to configure the creation process.
 
 All it's made using plain node without any kind of parser. So I'm still using `require` instead of `import`.
